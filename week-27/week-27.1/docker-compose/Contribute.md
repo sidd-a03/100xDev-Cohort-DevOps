@@ -13,7 +13,17 @@
 
 
 ## Docker Installation
+ - Install docker
+ - Start Postgres
+    - docker run --name postgres-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+ - Build the image
+    - docker build -t my-app .
+ - Run the container
+    - docker run -p 8080:8080 my-app
+ 
  
 
 ## Docker Compose Installation Steps
- 
+ - Install docker compose
+ - Run `docker-compose up`
+ - Run `docker-compose down` to stop the containers

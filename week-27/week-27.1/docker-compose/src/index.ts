@@ -9,7 +9,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Hey there!!");
+    res.send("Hello Docker!!");
 })
 
 app.post("/signup", async (req, res) => {
