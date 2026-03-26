@@ -1,7 +1,6 @@
 import "dotenv/config"
 import express from 'express'
 import { prisma } from "./lib/prisma";
-import connectToDatabase from "./database/db";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -28,7 +27,4 @@ app.post("/signup", async (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
-    console.log(`The server is listening on port ${PORT}`)
-    connectToDatabase();
-});
+app.listen(PORT, () => console.log(`The server is listening on port ${PORT}`));
