@@ -3,7 +3,7 @@ import express from 'express'
 import { prisma } from "./lib/prisma";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 8080;
 
 app.use(express.json());
 

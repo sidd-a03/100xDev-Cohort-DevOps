@@ -57,8 +57,14 @@ FROM base AS final
 # Use production node environment by default.
 ENV NODE_ENV="production"
 
+COPY start.sh .
+RUN chmod +x start.sh
+
 # Run the application as a non-root user.
 USER node
+
+# prisma.config.ts
+COPY prisma.config.ts .
 
 # Copy package.json so that package manager commands can be used.
 COPY package.json .
@@ -66,6 +72,9 @@ COPY package.json .
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.
 COPY --from=deps /usr/src/app/node_modules ./node_modules
+
+# prisma
+COPY prisma ./prisma
 
 #prisma generated client
 COPY --from=build /usr/src/app/src/generated/prisma ./src/generated/prisma
@@ -77,4 +86,4 @@ COPY --from=build /usr/src/app/dist ./dist
 EXPOSE 8080
 
 # Run the application.
-CMD [ "npm", "run", "start" ]
+CMD [ "/bin/sh", "start.sh" ]

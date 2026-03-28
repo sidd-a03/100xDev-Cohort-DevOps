@@ -14,12 +14,14 @@
 
 ## Docker Installation
  - Install docker
+ - Create a new network
+    - `docker network create user_project`
  - Start Postgres
-    - docker run --name postgres-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+    - `docker run --network user_project --name postgres-db -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres`
  - Build the image
-    - docker build -t my-app .
+    - `docker build -t my-app .`
  - Run the container
-    - docker run -p 8080:8080 my-app
+    - `docker run --network user_project -p 8080:8080 my-app`
  
  
 
